@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/ToolBar';
 import Grid from '@material-ui/core/Grid';
-import Button from '../UI/Button/BaseButton';
+import Button from '../UI/BaseButton/BaseButton';
 
 import classes from './Header.module.css';
 
@@ -14,7 +14,7 @@ const Header = (props) => {
       <ToolBar>
         <Grid container>
           <Grid item xs={6} md={10} sm={8}>
-            <Button isLink to="/">
+            <Button isLink to="/" color="blank" unborder>
               Pökeritö Plan
             </Button>
           </Grid>

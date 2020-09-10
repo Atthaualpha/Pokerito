@@ -30,6 +30,8 @@ const BaseButton = (props) => {
 
   const button = (
     <Button
+      type={props.type}
+      className={classes.Button}
       onClick={props.clicked}
       color={colorLevel}
       disabled={props.disabled}

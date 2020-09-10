@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Home from '../Home/Home';
-import Login from '../Login/Login';
-import Signup from '../Signup/Signup';
+import Login from '../../containers/Login/Login';
+import Signup from '../../containers/Signup/Signup';
 
 const RouterConfig = () => {
   const routes = [

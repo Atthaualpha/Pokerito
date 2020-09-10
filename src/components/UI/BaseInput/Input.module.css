@@ -1,0 +1,9 @@
+.FormInput {
+    display: block !important;    
+    padding: 10px 0px !important;
+}
+
+.Label {
+    font-family: 'Indie Flower', cursive !important;
+    font-weight: bold !important;
+}
