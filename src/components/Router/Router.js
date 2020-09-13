@@ -1,12 +1,12 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../Home/Home';
 import Login from '../../containers/Login/Login';
 import Signup from '../../containers/Signup/Signup';
+import Logout from '../../containers/Logout/Logout';
 
-const RouterConfig = () => {
-  const routes = [
+const RouterConfig = (props) => {
+  const unauthenticatedRoutes = [
     {
       path: '/',
       exact: true,
@@ -20,24 +20,32 @@ const RouterConfig = () => {
       path: '/signup',
       component: Signup,
     },
+  ];
+
+  const authenticatedRoutes = [
     {
-      path: '*',
+      path: '/',
+      exact: true,
       component: Home,
     },
+    {
+      path: '/logout',
+      component: Logout,
+    },
   ];
+
+  const isAuthenticated = props.isAuthenticated;
+  let routes = unauthenticatedRoutes;
+  if (isAuthenticated) {
+    routes = authenticatedRoutes;
+  }
 
   return (
     <Switch>
       {routes.map((route, i) => {
-        return (
-          <Route
-            key={i}
-            path={route.path}
-            exact={route.exact}
-            component={route.component}
-          ></Route>
-        );
+        return <Route key={i} path={route.path} exact={route.exact} component={route.component}></Route>;
       })}
+      <Redirect to="/" />
     </Switch>
   );
 };

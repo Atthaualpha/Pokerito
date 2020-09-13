@@ -1,0 +1,6 @@
+.Alert {
+  z-index: 1000;
+  position: fixed;
+  top: 48;
+  right: 1%;
+}
