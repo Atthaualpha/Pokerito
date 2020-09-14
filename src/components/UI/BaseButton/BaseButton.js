@@ -30,14 +30,16 @@ const BaseButton = (props) => {
 
   const button = (
     <Button 
+      ref={props.buttonRef} 
       type={props.type}
-      className={classes.Button}
+      className={classes.Button + ' ' + props.classes}      
       onClick={props.clicked}
       color={colorLevel}
       disabled={props.disabled}
       variant={boxType}
       startIcon={props.startIcon}
       endIcon={props.endIcon}
+      fullWidth={props.fullWidth}
     >
       {props.children}
     </Button>

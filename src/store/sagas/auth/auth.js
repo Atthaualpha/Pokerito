@@ -39,7 +39,7 @@ export function* signUpSaga({ payload }) {
     yield storeSessionData(response.data.idToken, response.data.localId, payload.name);
     yield persistUser({ userId: response.data.localId, username: payload.name });
     yield put(actions.signupSuccess(response.data.idToken, response.data.localId, payload.name));
-    yield put(actions.actionSuccess('Signup successful')); // show alert with message
+    yield put(actions.showAlert('SUCCESS', 'Signup successful')); // show alert with message
   } catch (err) {
     yield put(actions.actionFormFail(err.response.data.error.message));
   }
@@ -73,7 +73,7 @@ export function* loginSaga({ payload }) {
     }
     yield storeSessionData(response.data.idToken, response.data.localId, username);
     yield put(actions.loginSuccess(response.data.idToken, response.data.localId, username));
-    yield put(actions.actionSuccess('Logged in'));
+    yield put(actions.showAlert('SUCCESS', 'Signed in'));
   } catch (err) {
     console.log(err.response);
     yield put(actions.actionFormFail('INVALID_CREDENTIALS'));
@@ -87,14 +87,13 @@ export function* logoutSaga() {
   yield put(actions.logout());
 }
 
-export function* checkSessionSaga({payload}) {
+export function* checkSessionSaga({ payload }) {
   if (!payload.isAuthenticated) {
     const token = yield localStorage.getItem('token');
     if (token) {
       const userId = yield localStorage.getItem('userId');
       const username = yield localStorage.getItem('username');
       yield put(actions.loginSuccess(token, userId, username));
-      yield put(actions.actionSuccess('Logged in'));
     }
   }
 }

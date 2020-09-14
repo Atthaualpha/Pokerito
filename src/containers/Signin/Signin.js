@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import Input from '../../components/UI/BaseInput/BaseInput';
 import Button from '../../components/UI/BaseButton/BaseButton';
 
-import classes from './Login.module.css';
+import classes from './Signin.module.css';
 
 yup.setLocale({
   mixed: {
@@ -20,7 +20,7 @@ const schema = yup.object().shape({
   password: yup.string().trim().required(),
 });
 
-const Login = (props) => {
+const Signin = (props) => {
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
   });
@@ -31,10 +31,10 @@ const Login = (props) => {
     const unsubcribe = store.subscribe(() => {
       const message = store.getState().global.alertMessage;
       if (message === 'INVALID_CREDENTIALS' && !errors.email) {
-        setError('email', { type: 'manual', message: 'Invalid name or' });
+        setError('email', { type: 'manual', message: 'Invalid email or' });
         setError('password', { type: 'manual', message: 'Invalid password' });
-      }else if(message === 'Logged in'){
-        props.history.push('/')
+      } else if (message === 'Signed in') {
+        props.history.push('/');
       }
     });
 
@@ -49,8 +49,8 @@ const Login = (props) => {
 
   return (
     <div>
-      <h1 style={{ textAlign: 'center' }}>Login</h1>
       <form noValidate autoComplete="off" className={classes.Form} onSubmit={handleSubmit(loginHandler)}>
+        <h1>Sign In</h1>
         <Input name="email" label="Email" fullWidth type="email" inputRef={register} errors={errors}></Input>
         <Input
           name="password"
@@ -60,7 +60,7 @@ const Login = (props) => {
           inputRef={register}
           errors={errors}
         ></Input>
-        <Button type="submit">Login</Button>
+        <Button type="submit">Sign In</Button>
       </form>
     </div>
   );
@@ -72,4 +72,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Signin);

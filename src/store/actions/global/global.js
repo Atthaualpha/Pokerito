@@ -24,6 +24,16 @@ export const actionFail = (message) => {
     }
 }
 
+export const showAlert = (status, message) => {
+    return {
+        type: actionTypes.SHOW_ALERT,
+        payload: {
+            status,
+            message
+        }
+    }
+}
+
 export const closeAlert = () => {    
     return {
         type: actionTypes.CLOSE_ALERT

@@ -1,20 +1,21 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Home from '../Home/Home';
-import Login from '../../containers/Login/Login';
-import Signup from '../../containers/Signup/Signup';
-import Logout from '../../containers/Logout/Logout';
+import Home from '../components/Home/Home';
+import Signup from '../containers/Signup/Signup';
+import Logout from '../containers/Logout/Logout';
+import Signin from '../containers/Signin/Signin';
+import Account from '../containers/Account/Account';
 
 const RouterConfig = (props) => {
   const unauthenticatedRoutes = [
     {
       path: '/',
-      exact: true,
+      exact: true, 
       component: Home,
     },
     {
-      path: '/login',
-      component: Login,
+      path: '/signin',
+      component: Signin,
     },
     {
       path: '/signup',
@@ -27,6 +28,10 @@ const RouterConfig = (props) => {
       path: '/',
       exact: true,
       component: Home,
+    },
+    {
+      path: '/account',
+      component: Account,
     },
     {
       path: '/logout',

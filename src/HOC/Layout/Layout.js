@@ -9,7 +9,7 @@ import BaseAlert from '../../components/UI/BaseAlert/BaseAlert';
 const Layout = (props) => {
   return (
     <div className={classes.Layout}>
-      <Header isLoading={props.isLoading} isAuthenticated={props.isAuthenticated} />
+      <Header username={props.username} isLoading={props.isLoading} isAuthenticated={props.isAuthenticated} />
       <main className={classes.Main}>
         <BaseAlert />
         {props.children}
@@ -20,7 +20,11 @@ const Layout = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { isLoading: state.global.loading, isAuthenticated: state.auth.isAuthenticated };
+  return {
+    isLoading: state.global.loading,
+    isAuthenticated: state.auth.isAuthenticated,
+    username: state.auth.username,
+  };
 };
 
 export default connect(mapStateToProps, null)(Layout);

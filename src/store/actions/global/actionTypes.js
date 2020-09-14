@@ -2,4 +2,5 @@ export const LOADING_START = 'LOADING_START';
 export const ACTION_SUCCESS = 'ACTION_SUCCESS';
 export const ACTION_FAIL = 'ACTION_FAIL';
 export const CLOSE_ALERT = 'CLOSE_ALERT';
-export const ACTION_FORM_FAIL = 'ACTION_FORM_FAIL'
+export const ACTION_FORM_FAIL = 'ACTION_FORM_FAIL';
+export const SHOW_ALERT = 'SHOW_ALERT_SUCCES';

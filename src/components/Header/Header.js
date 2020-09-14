@@ -6,42 +6,66 @@ import ToolBar from '@material-ui/core/ToolBar';
 import Grid from '@material-ui/core/Grid';
 import Button from '../UI/BaseButton/BaseButton';
 import Loader from '../UI/Loader/Loader';
+import UserIcon from '@material-ui/icons/AccountCircle';
 
 import classes from './Header.module.css';
+import Dropdown from '../UI/Dropdown/Dropdown';
+import DropdownItem from '../UI/DropdownItem/DropdownItem';
 
 const Header = (props) => {
+  const unauthMenu = (
+    <Grid container>
+      <Grid item xs={4} md={6} sm={6}>
+        <Button isLink to="/" color="blank" unborder>
+          Pökeritö Plan
+        </Button>
+      </Grid>
+      <Grid item xs={2} md={2} sm={2} className={classes.Item}>
+        <Button isLink to="/">
+          Quick Play
+        </Button>
+      </Grid>
+      <Grid item xs={2} md={2} sm={2} className={classes.Item}>
+        <Button isLink to="/signin">
+          Sign in
+        </Button>
+      </Grid>
+      <Grid item xs={2} md={2} sm={2} className={classes.Item}>
+        <Button isLink to="/signup">
+          Sign up
+        </Button>
+      </Grid>
+    </Grid>
+  );
+
+  const authMenu = (
+    <Grid container>
+      <Grid item xs={2} md={4} sm={2}>
+        <Button isLink to="/" color="blank" unborder>
+          Pökeritö Plan
+        </Button>
+      </Grid>
+      <Grid item xs={1} md={2} sm={2} className={classes.Item}>
+        <Button>Join Room</Button>
+      </Grid>
+      <Grid item xs={1} md={2} sm={2} className={classes.Item}>
+        <Button>Create Room</Button>
+      </Grid>
+      <Grid item xs={1} md={2} sm={2} className={classes.Item}>
+        <Button>Room History</Button>
+      </Grid>
+      <Grid item xs={1} md={2} sm={2} className={classes.Item}>
+        <Dropdown endIcon={<UserIcon />} text={props.username}>
+          <DropdownItem to="/account">Account</DropdownItem>
+          <DropdownItem to="/logout">Logout</DropdownItem>
+        </Dropdown>
+      </Grid>
+    </Grid>
+  );
+
   return (
     <AppBar className={classes.Header}>
-      <ToolBar>
-        <Grid container>
-          <Grid item xs={6} md={10} sm={8}>
-            <Button isLink to="/" color="blank" unborder>
-              Pökeritö Plan
-            </Button>
-          </Grid>
-          {!props.isAuthenticated ? (
-            <Grid item xs={3} md={1} sm={2} className={classes.Item}>
-              <Button isLink to="/login">
-                Login
-              </Button>
-            </Grid>
-          ) : null}
-          {!props.isAuthenticated ? (
-            <Grid item xs={3} md={1} sm={2} className={classes.Item}>
-              <Button isLink to="/signup">
-                Sign up
-              </Button>
-            </Grid>
-          ) : null}
-          {props.isAuthenticated ? (
-            <Grid item xs={6} md={2} sm={4} className={classes.Item}>
-              <Button isLink to="/logout">
-                Logout
-              </Button>
-            </Grid>
-          ) : null}
-        </Grid>
-      </ToolBar>
+      <ToolBar>{props.isAuthenticated ? authMenu : unauthMenu}</ToolBar>
       {props.isLoading && <Loader />}
     </AppBar>
   );

@@ -1,0 +1,12 @@
+.Form {
+    width: 50%;
+    max-width: 500px;
+    min-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.Form .Button {
+    margin: 10px 0;
+}

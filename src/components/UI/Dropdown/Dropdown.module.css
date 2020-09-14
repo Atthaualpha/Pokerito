@@ -1,0 +1,7 @@
+.Dropdown {
+    z-index: 1100;
+}
+
+.Dropdown .Menu {
+    background-color: white;
+}

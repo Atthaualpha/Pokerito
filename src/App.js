@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as authAction from './store/actions/auth/auth';
-import Router from './components/Router/Router';
+import Router from './Router/Router';
 import Layout from './HOC/Layout/Layout';
 
 const App = (props) => {
