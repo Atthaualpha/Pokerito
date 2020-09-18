@@ -8,7 +8,7 @@ import rootReducer from './store/reducers/rootReducer';
 import createSagaMiddleware from 'redux-saga';
 
 import App from './App';
-import rootSaga from './store/sagas/sagas'
+import rootSaga from './store/sagas/sagas';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -21,13 +21,11 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMidd
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

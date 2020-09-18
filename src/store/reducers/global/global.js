@@ -5,6 +5,7 @@ const initialState = {
   showAlert: false,
   severity: '',
   alertMessage: '',
+  modalStatus: false,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -28,14 +29,18 @@ export default (state = initialState, { type, payload }) => {
     case actionTypes.ACTION_FORM_FAIL:
       return updatedState(state, {
         loading: false,
-        alertMessage: payload.message
-      })  
+        alertMessage: payload.message,
+      });
     case actionTypes.CLOSE_ALERT:
       return updatedState(state, {
         showAlert: false,
         severity: '',
         alertMessage: '',
       });
+    case actionTypes.OPEN_MODAL:
+      return updatedState(state, { modalStatus: true });
+    case actionTypes.CLOSE_MODAL:
+      return updatedState(state, { modalStatus: false });
     default:
       return state;
   }
