@@ -11,13 +11,14 @@ export const signupStart = (name, email, password) => {
   };
 };
 
-export const signupSuccess = (token, userId, username) => {
+export const signupSuccess = (token, userId, username, email) => {
   return {
     type: actionTypes.SIGN_UP_SUCCESS,
     payload: {
       token,
       userId,
       username,
+      email
     },
   };
 };
@@ -32,13 +33,14 @@ export const loginStart = (email, password) => {
   };
 };
 
-export const loginSuccess = (token, userId, username) => {
+export const loginSuccess = (token, userId, username, email) => {
   return {
     type: actionTypes.LOGIN_SUCCESS,
     payload: {
       token,
       userId,
       username,
+      email
     },
   };
 };

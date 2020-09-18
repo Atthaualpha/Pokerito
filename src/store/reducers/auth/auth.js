@@ -5,6 +5,7 @@ const initialState = {
   token: '',
   userId: '',
   username: '',
+  email: '',
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -14,6 +15,9 @@ export default (state = initialState, { type, payload }) => {
       return updatedState(state, { ...payload, isAuthenticated: true });
     case actionTypes.LOGOUT:
       return initialState;
+    case actionTypes.UPDATE_USER_INFO: {
+      return updatedState(state, { ...payload });
+    }
     default:
       return state;
   }
