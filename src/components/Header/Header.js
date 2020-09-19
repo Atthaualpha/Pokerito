@@ -52,7 +52,9 @@ const Header = (props) => {
         <Button>Create Room</Button>
       </Grid>
       <Grid item xs={1} md={2} sm={2} className={classes.Item}>
-        <Button>Room History</Button>
+        <Button isLink to="/roomHistory">
+          Room History
+        </Button>
       </Grid>
       <Grid item xs={1} md={2} sm={2} className={classes.Item}>
         <Dropdown endIcon={<UserIcon />} text={props.username}>

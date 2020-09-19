@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers';
 import { connect } from 'react-redux';
+import * as yup from 'yup';
 
 import * as actions from '../../store/actions/index';
 
@@ -8,13 +10,22 @@ import Button from '../../components/UI/BaseButton/BaseButton';
 import Input from '../../components/UI/BaseInput/BaseInput';
 import classes from './Account.module.css';
 import ModalPassword from './ModalPassword/ModalPassword';
+
+const schema = yup.object().shape({
+  name: yup.string().required('Name is required'),
+});
+
 const Account = (props) => {
-  const { register, handleSubmit, setValue, errors } = useForm();
+  const { register, handleSubmit, setValue, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const { username, email } = props;
 
   useEffect(() => {
-    setValue('name', props.username);
-    setValue('email', props.email);
-  });
+    setValue('name', username);
+    setValue('email', email);
+  }, [username, email, setValue]);
 
   const submitHandler = (data) => {
     props.onUpdate(data.name);
