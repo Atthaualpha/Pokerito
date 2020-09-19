@@ -5,12 +5,13 @@ import Signup from '../containers/Signup/Signup';
 import Logout from '../containers/Logout/Logout';
 import Signin from '../containers/Signin/Signin';
 import Account from '../containers/Account/Account';
+import History from '../containers/History/History';
 
 const RouterConfig = (props) => {
   const unauthenticatedRoutes = [
     {
       path: '/',
-      exact: true, 
+      exact: true,
       component: Home,
     },
     {
@@ -28,6 +29,10 @@ const RouterConfig = (props) => {
       path: '/',
       exact: true,
       component: Home,
+    },
+    {
+      path: '/roomHistory',
+      component: History,
     },
     {
       path: '/account',

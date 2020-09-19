@@ -1,0 +1,16 @@
+.TableHead {
+  background-color: #303f9f;
+}
+
+.TableHeadCell {
+  color: white !important;
+  font-family: 'Indie Flower', cursive !important;
+  font-weight: bold !important;
+  font-size: 19px !important;
+}
+
+.TableRowCell {
+  font-family: 'Indie Flower', cursive !important;
+  font-weight: bold !important;
+  font-size: 19px !important;
+}
