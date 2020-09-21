@@ -36,11 +36,7 @@ export default (state = initialState, { type, payload }) => {
         showAlert: false,
         severity: '',
         alertMessage: '',
-      });
-    case actionTypes.OPEN_MODAL:
-      return updatedState(state, { modalStatus: true });
-    case actionTypes.CLOSE_MODAL:
-      return updatedState(state, { modalStatus: false });
+      });   
     default:
       return state;
   }

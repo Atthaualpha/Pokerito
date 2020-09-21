@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer';
 
 import classes from './Layout.module.css';
 import BaseAlert from '../../components/UI/BaseAlert/BaseAlert';
+import NewRoom from '../../containers/NewRoom/NewRoom';
 const Layout = (props) => {
   return (
     <div className={classes.Layout}>
@@ -13,6 +14,7 @@ const Layout = (props) => {
       <main className={classes.Main}>
         <BaseAlert />
         {props.children}
+        <NewRoom/>
       </main>
       <Footer />
     </div>

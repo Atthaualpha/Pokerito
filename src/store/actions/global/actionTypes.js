@@ -4,5 +4,3 @@ export const ACTION_FAIL = 'ACTION_FAIL';
 export const CLOSE_ALERT = 'CLOSE_ALERT';
 export const ACTION_FORM_FAIL = 'ACTION_FORM_FAIL';
 export const SHOW_ALERT = 'SHOW_ALERT_SUCCES';
-export const OPEN_MODAL = 'OPEN_MODAL';
-export const CLOSE_MODAL = 'CLOSE_MODAL';

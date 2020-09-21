@@ -1,11 +1,13 @@
 import {combineReducers} from 'redux'
 
-import globalReducer from '../reducers/global/global';
-import authReducer from '../reducers/auth/auth';
+import globalReducer from './global/global';
+import authReducer from './auth/auth';
+import roomReducer from './room/room'
 
 const rootReducer = combineReducers({
     global: globalReducer,
-    auth: authReducer
+    auth: authReducer,
+    room: roomReducer
 })
 
 export default rootReducer;

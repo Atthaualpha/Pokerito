@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
@@ -27,8 +27,17 @@ const ModalPassword = (props) => {
     props.onChangePassword(data.password);
   };
 
+  const {onClose} = props;
+
+  useEffect(()=> {
+    if(props.alert) {  
+      onClose()   
+    }
+  },[props.alert,onClose])
+  
+
   return (
-    <Modal title="Change Password" modalSize="sm">
+    <Modal isOpen={props.isOpen} title="Change Password" modalSize="sm" onClose={props.onClose}>
       <form className={classes.Form} noValidate autoComplete="off" onSubmit={handleSubmit(submitHandler)}>
         <Input
           name="password"
@@ -52,10 +61,16 @@ const ModalPassword = (props) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    alert: state.global.showAlert
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChangePassword: (password) => dispatch(actions.updatePassword(password)),
+    onChangePassword: (password) => dispatch(actions.updatePassword(password)),    
   };
 };
 
-export default connect(null, mapDispatchToProps)(ModalPassword);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalPassword);

@@ -28,10 +28,6 @@ const RouterConfig = (props) => {
     {
       path: '/',
       exact: true,
-      component: Home,
-    },
-    {
-      path: '/roomHistory',
       component: History,
     },
     {

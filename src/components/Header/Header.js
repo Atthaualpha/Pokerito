@@ -1,5 +1,7 @@
 import React from 'react';
+import {useDispatch} from 'react-redux'
 import { withRouter } from 'react-router-dom';
+import * as actions from '../../store/actions/index'
 
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/ToolBar';
@@ -13,6 +15,9 @@ import Dropdown from '../UI/Dropdown/Dropdown';
 import DropdownItem from '../UI/DropdownItem/DropdownItem';
 
 const Header = (props) => {
+
+  const dispatch = useDispatch();
+
   const unauthMenu = (
     <Grid container>
       <Grid item xs={4} md={6} sm={6}>
@@ -40,23 +45,18 @@ const Header = (props) => {
 
   const authMenu = (
     <Grid container>
-      <Grid item xs={2} md={4} sm={2}>
+      <Grid item xs={4} md={6} sm={4}>
         <Button isLink to="/" color="blank" unborder>
           Pökeritö Plan
         </Button>
       </Grid>
-      <Grid item xs={1} md={2} sm={2} className={classes.Item}>
+      <Grid item xs={2} md={2} sm={3} className={classes.Item}>
         <Button>Join Room</Button>
       </Grid>
-      <Grid item xs={1} md={2} sm={2} className={classes.Item}>
-        <Button>Create Room</Button>
+      <Grid item xs={2} md={2} sm={3} className={classes.Item}>
+        <Button clicked={() => dispatch(actions.openModalCreateRoom())}>Create Room</Button>
       </Grid>
-      <Grid item xs={1} md={2} sm={2} className={classes.Item}>
-        <Button isLink to="/roomHistory">
-          Room History
-        </Button>
-      </Grid>
-      <Grid item xs={1} md={2} sm={2} className={classes.Item}>
+      <Grid item xs={2} md={2} sm={2} className={classes.Item}>
         <Dropdown endIcon={<UserIcon />} text={props.username}>
           <DropdownItem to="/account">Account</DropdownItem>
           <DropdownItem to="/logout">Logout</DropdownItem>

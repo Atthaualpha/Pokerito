@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
 import { connect } from 'react-redux';
@@ -16,6 +16,8 @@ const schema = yup.object().shape({
 });
 
 const Account = (props) => {
+  const [modalStatus, setModalStatus] = useState(false);
+
   const { register, handleSubmit, setValue, errors } = useForm({
     resolver: yupResolver(schema),
   });
@@ -37,14 +39,14 @@ const Account = (props) => {
         <h1>Account</h1>
         <Input name="name" label="name" fullWidth inputRef={register} errors={errors} />
         <Input name="email" label="email" disabled fullWidth inputRef={register} errors="" />
-        <Button fullWidth color="blank" classes={classes.Button} clicked={() => props.onChangePassword()}>
+        <Button fullWidth color="blank" classes={classes.Button} clicked={() => setModalStatus(true)}>
           Change Password
         </Button>
         <Button type="submit" classes={classes.Button}>
           Update
         </Button>
       </form>
-      <ModalPassword />
+      <ModalPassword isOpen={modalStatus} onClose={() => setModalStatus(false)} />
     </div>
   );
 };
@@ -59,7 +61,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onUpdate: (newUsername) => dispatch(actions.updateUserStart(newUsername)),
-    onChangePassword: () => dispatch(actions.openModal()),
   };
 };
 
