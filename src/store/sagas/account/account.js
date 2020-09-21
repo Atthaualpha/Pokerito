@@ -21,7 +21,6 @@ export function* updatePasswordSaga({ payload }) {
   } catch (err) {
     yield put(actions.showAlert('FAIL','Error changing password'));
   }
-  yield put(actions.closeModal());
 }
 
 export function* updateUserInfoSaga({ payload }) {
